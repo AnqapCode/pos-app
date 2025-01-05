@@ -5,7 +5,7 @@ export const userValidation = (payload) => {
     name: joi.string().trim().required(),
     userName: joi.string().min(4).trim().required(),
     password: joi.string().min(4).max(15).required(),
-    confirmPassword: joi.any().equal(joi.ref("password")).required().label("Confirm Password").message({
+    confirmPassword: joi.any().equal(joi.ref("password")).required().label("Confirm Password").messages({
       "any.only": "{{#label}} not same as password",
       "any.required": "{{#label}} is required",
     }),
@@ -20,7 +20,7 @@ export const userUpdateValidation = (payload) => {
     name: joi.string().trim().required(),
     userName: joi.string().min(4).trim().required(),
     password: joi.string().min(4).max(15).allow(null).allow(""),
-    confirmPassword: joi.any().equal(joi.ref("password")).required().label("Confirm Password").message({
+    confirmPassword: joi.any().equal(joi.ref("password")).required().label("Confirm Password").messages({
       "any.only": "{{#label}} not same as password",
       "any.required": "{{#label}} is required",
     }),
