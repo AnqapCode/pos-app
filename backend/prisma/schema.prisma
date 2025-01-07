@@ -43,7 +43,7 @@ model Product {
 model Supplier {
   id        Int       @id @default(autoincrement())
   firstName String
-  lasName   String?
+  lastName  String?
   phone     String
   email     String?
   address   String
