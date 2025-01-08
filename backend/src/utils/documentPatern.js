@@ -1,4 +1,4 @@
-export const serCode = (key) => {
+export const setCode = (key) => {
   const code = Math.floor(Math.random() * Date.now());
   return `${key}${code}`;
 };

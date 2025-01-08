@@ -1,0 +1,98 @@
+@lastId=80
+@limit=2
+
+### create product
+POST http://localhost:3000/api/products
+Authorization: Bearer {{$global.accessToken}}
+Content-Type: multipart/form-data; boundary=WebKitFormBoundary
+
+--WebKitFormBoundary
+Content-Disposition: form-data; name="barcode"
+
+987654321
+--WebKitFormBoundary
+Content-Disposition: form-data; name="productName"
+
+Sample Product 2
+--WebKitFormBoundary
+Content-Disposition: form-data; name="qty"
+
+230
+--WebKitFormBoundary
+Content-Disposition: form-data; name="price"
+
+10000
+--WebKitFormBoundary
+Content-Disposition: form-data; name="kategoryId"
+
+1
+--WebKitFormBoundary
+Content-Disposition: form-data; name="supplierId"
+
+2
+--WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="example.png"
+Content-Type: image/png
+
+< ./example.png
+--WebKitFormBoundary--
+
+### get all products
+GET http://localhost:3000/api/products
+Authorization: Bearer {{$global.accessToken}}
+
+### get product by id
+GET http://localhost:3000/api/products/2
+Authorization: Bearer {{$global.accessToken}}
+
+### get product by category
+GET http://localhost:3000/api/products/category/1
+Authorization: Bearer {{$global.accessToken}}
+
+### update product
+PUT http://localhost:3000/api/products/2
+Authorization: Bearer {{$global.accessToken}}
+Content-Type: multipart/form-data; boundary=WebKitFormBoundary
+
+--WebKitFormBoundary
+Content-Disposition: form-data; name="barcode"
+
+123456789
+--WebKitFormBoundary
+Content-Disposition: form-data; name="productName"
+
+Sample Product
+--WebKitFormBoundary
+Content-Disposition: form-data; name="qty"
+
+200
+--WebKitFormBoundary
+Content-Disposition: form-data; name="price"
+
+20000
+--WebKitFormBoundary
+Content-Disposition: form-data; name="kategoryId"
+
+1
+--WebKitFormBoundary
+Content-Disposition: form-data; name="supplierId"
+
+5
+--WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="example.png"
+Content-Type: image/png
+
+< ./example.png
+--WebKitFormBoundary--
+
+### delete product by id
+DELETE http://localhost:3000/api/products/2
+Authorization: Bearer {{$global.accessToken}}
+
+### generate product pdf
+GET http://localhost:3000/api/products-pdf
+Authorization: Bearer {{$global.accessToken}}
+
+### generate product excel
+GET http://localhost:3000/api/products-excel
+Authorization: Bearer {{$global.accessToken}}
